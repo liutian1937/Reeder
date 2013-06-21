@@ -19,19 +19,18 @@ background: -o-linear-gradient(top,  #ffffff 22%,#f2f2f2 51%,#f5f5f5 81%,#ffffff
 background: -ms-linear-gradient(top,  #ffffff 22%,#f2f2f2 51%,#f5f5f5 81%,#ffffff 100%); /* IE10+ */
 background: linear-gradient(to bottom,  #ffffff 22%,#f2f2f2 51%,#f5f5f5 81%,#ffffff 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
-
 	}
 
-#wrap{width:600px;margin:50px auto;position:relative;}
+#wrap{width:420px;margin:0px auto;position:relative;}
+#wrap h1{width:100%;height:50px;background-image:-webkit-gradient(linear,0% 15%, 0% 100%, from(#999999), to(#999999), color-stop(0.0,#333333));text-align:center;color:#fff;line-height:50px;}
 
-#timer{width:301px;height:301px;background:#fff;border-radius:301px;box-shadow:0px 0px 100px rgba(220,220,220,0.2),0px 8px 16px rgba(177,177,177,0.5),inset 0px 0px 50px rgba(229,229,229,0.5);position:relative;overflow:hidden;}
+#timer{width:301px;height:301px;background:#fff;border-radius:301px;box-shadow:0px 0px 100px rgba(220,220,220,0.2),0px 8px 16px rgba(177,177,177,0.5),inset 0px 0px 50px rgba(229,229,229,0.5);position:relative;overflow:hidden;margin-top:30px;}
 
 #pan{width:259px;height:259px;border-radius:259px;border:1px solid #d4d4d4;margin:20px;box-shadow:inset 0px 0px 20px #e7e7e7;position:relative;}
 #pan span{width:100%;height:1px;display:block;position:absolute;top:129px;left:0px;}
 #pan span:before{content:'';width:3px;height:1px;background:#ddd;display:block;left:8px;position:absolute;}
 #pan span:after{content:'';width:3px;height:1px;background:#ddd;display:block;right:8px;position:absolute;}
 
-#pan .long{background:#;}
 
 #pan .long:before,#pan .long:after{width:13px;background:#999;}
 #pan .middle:before,#pan .middle:after{width:9px;background:#ccc;}
@@ -45,20 +44,157 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 .no60{left:142px;top:46px;}
 .no15{right:46px;top:142px;}
 
-#drag{position:absolute;right:100px;top:0px;}
-#dragWrap{position:relative;height:300px;width:90px;text-align:center;}
+/*下拉部分*/
+#drag{position:absolute;right:10px;top:50px;cursor:pointer;overflow:hidden;}
+#dragWrap{position:relative;padding-bottom:110px;width:90px;text-align:center;top:-300px;-webkit-transition:all 0s linear;-moz-transition:all 0s linear;-o-transition:all 0s linear;transition:all 0s linear;}
 
-#dragWrap .bar{width:50px;height:200px;background:#8fa58e;z-index:1;display:inline-block;}
-#dragWrap .barBottom{width:72px;height:30px;background:#fff;left:8px;bottom:71px;position:absolute;z-index:1;border-left:1px solid #ddd;border-right:1px solid #ddd;}
-#dragWrap .hand{width:88px;height:88px;border:1px solid #ddd;border-radius:88px;box-shadow:0px 5px 10px rgba(177,177,177,0.4),inset 0px 0px 1px rgba(229,229,229,0.5);position:absolute;bottom:0px;z-index:0;}
-/*
-#dragWrap .hand:before{content:'';width:66px;height:66px;border-radius:66px;border:1px solid #ddd;position:absolute;left:10px;top:10px;box-shadow:0px -1px 8px #e8e8e8,inset 0px 3px 7px rgba(0,0,0,0.3);z-index:0;}
-#dragWrap .hand:after{content:'';width:70px;height:20px;position:absolute;border-left:1px solid #ddd;border-right:1px solid #ddd;background:#fff;top:-10px;left:-10px;}*/
+/*下拉条*/
+#bar{width:48px;background:#8fa58e;z-index:20;display:inline-block;box-shadow:0px 0px 2px rgba(177,177,177,0.4);position:relative;}
+#bar span{width:100%;height:1px;float:right;margin-bottom:1px;position:relative;}
+#bar span:after{content:'';width:3px;height:1px;background:#fff;position:absolute;right:0px;top:0px;}
+#bar .long:after{width:10px;}
+#bar .middle:after{width:6px;}
+#bar .short:after{width:3px;}
+
+#bar:after{content:'';width:0px;height:0px;font-size:0;line-height:0;position:absolute;bottom:-18px;left:18px;border:6px dotted #fff;border:6px dotted #fff\0\9;border-color:transparent;border-top-color:#aaa;}
+/*拉环*/
+#dragWrap .barBottom{width:52px;height:20px;left:19px;bottom:92px;position:absolute;z-index:2;background:#fff;}
+#dragWrap .barBottom:before{content:'';width:1px;height:100%;position:absolute;left:0px;top:0px;background:#ddd;box-shadow:-1px 0px 1px rgba(177,177,177,0.2);}
+#dragWrap .barBottom:after{content:'';width:1px;height:100%;position:absolute;right:0px;top:0px;background:#ddd;box-shadow:1px 0px 1px rgba(177,177,177,0.2);}
+#dragWrap .hand{width:78px;height:78px;position:absolute;left:5px;bottom:22px;border:1px solid #ddd;border-radius:78px;box-shadow:0px 5px 10px rgba(177,177,177,0.4),inset 0px 0px 1px rgba(229,229,229,0.5);z-index:1;}
+#dragWrap .handCircle{width:58px;height:58px;position:absolute;left:15px;bottom:32px;border-radius:58px;border:1px solid #ddd;box-shadow:0px -1px 8px #e8e8e8,inset 0px 3px 7px rgba(0,0,0,0.3);z-index:10;}
+
+#clockText{width:100%;text-indent:110px;padding:20px 0px;color:#9c5656;font-size:30px;font-weight:bold;line-height:30px;}
+
+
+/*控制按钮*/
+#control{width:300px;text-align:center;}
+#control a{width:80px;height:80px;border-radius:80px;display:inline-block;position:relative;text-align:center;margin:0px 20px;}
+#control a span{width:64px;height:64px;background:#fff;display:inline-block;border-radius:64px;margin-top:8px;box-shadow:0px 0px 10px #cdcdcd,inset 0px 0px 1px #f9f9f9;position:relative;z-index:1;}
+#control a{
+	background-image: linear-gradient(bottom, rgb(228,228,228) 59%, rgb(249,249,249) 31%);
+	background-image: -o-linear-gradient(bottom, rgb(228,228,228) 59%, rgb(249,249,249) 31%);
+	background-image: -moz-linear-gradient(bottom, rgb(228,228,228) 59%, rgb(249,249,249) 31%);
+	background-image: -webkit-linear-gradient(bottom, rgb(228,228,228) 59%, rgb(249,249,249) 31%);
+	background-image: -ms-linear-gradient(bottom, rgb(228,228,228) 59%, rgb(249,249,249) 31%);
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.59, rgb(228,228,228)),
+		color-stop(0.31, rgb(249,249,249))
+	);
+}
+#control input{display:none;}
+#control label{width:100%;height:100%;display:block;cursor:pointer;opacity:0;position:absolute;left:0;top:0;z-index:10;}
+
+#control a span:before,#control a span:after{
+	content:'';
+	width:0px;
+	height:0px;
+	position:absolute;
+	font-size:0;
+	line-height:0;
+}
+
+/*播放暂停按钮*/
+#control .play:before{
+	content:'';
+    left:50%;
+	top:50%;
+    border:16px solid transparent;
+    border-width:12px 16px;
+    border-left-color:#7c7f84;
+    margin-top:-12px;
+	margin-left:-6px;
+    background:transparent;
+}
+#checkplay:checked + a span:before{
+	content:'';
+    left:50%;
+	top:50%;
+	margin-left:-10px;
+	margin-top:-11px;
+	width:6px;
+	height:22px;
+	border:6px solid #7c7f84;
+	border-width:0px 6px;
+    background:transparent;
+}
+
+
+
+/*重置按钮*/
+#control .reset em{width:16px;height:16px;display:block;background:#fff;position:absolute;border-radius:10px;left:50%;top:50%;z-index:10;margin-top:-8px;margin-left:-8px;}
+#control .reset:before{
+	background-image: linear-gradient(left top, rgb(118,121,126) 26%, rgb(232,234,233) 84%);
+	background-image: -o-linear-gradient(left top, rgb(118,121,126) 26%, rgb(232,234,233) 84%);
+	background-image: -moz-linear-gradient(left top, rgb(118,121,126) 26%, rgb(232,234,233) 84%);
+	background-image: -webkit-linear-gradient(left top, rgb(118,121,126) 26%, rgb(232,234,233) 84%);
+	background-image: -ms-linear-gradient(left top, rgb(118,121,126) 26%, rgb(232,234,233) 84%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		right bottom,
+		color-stop(0.26, rgb(118,121,126)),
+		color-stop(0.84, rgb(232,234,233))
+	);
+}
+
+#control .reset:before{
+	content:'';
+    left:50%;
+	top:50%;
+    width:28px;
+    height:28px;
+    margin-top:-14px;
+	margin-left:-14px;
+    border-radius:28px;
+}
+
+#control .reset:after {
+	top:32px;
+	left:12px;
+    border:8px solid #fff;
+    border-top-color:#7c7f84;
+    background:transparent;
+	z-index:20;
+}
+
+
+/* 鼠标效果*/
+
+#control a:hover{
+	background-image: linear-gradient(bottom, rgb(196,196,196) 41%, rgb(249,249,249) 16%);
+	background-image: -o-linear-gradient(bottom, rgb(196,196,196) 41%, rgb(249,249,249) 16%);
+	background-image: -moz-linear-gradient(bottom, rgb(196,196,196) 41%, rgb(249,249,249) 16%);
+	background-image: -webkit-linear-gradient(bottom, rgb(196,196,196) 41%, rgb(249,249,249) 16%);
+	background-image: -ms-linear-gradient(bottom, rgb(196,196,196) 41%, rgb(249,249,249) 16%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.41, rgb(196,196,196)),
+		color-stop(0.16, rgb(249,249,249))
+	);
+}
+
+#control a:hover span{
+	box-shadow:0px 0px 10px #999,inset 0px 0px 5px #ececec;
+}
+#control a:active span{
+	box-shadow:0px 2px 2px #999,inset 0px 0px 5px #ececec;
+}
+
+
 </style>
 </head>
 <body>
 <!--wrap start-->
 	<div id="wrap">
+		<h1>计时器</h1>
 		<!--timer start-->
 			<div id="timer">
 				<!--pan start-->
@@ -70,26 +206,50 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 						<span class="number no60">60</span>
 						<span class="number no15">15</span>
 					<!--number end-->
-				
 				<!--pan end-->
 			</div>
 		<!--timer end-->
-		
+				
 		<!--drag button start-->
 			<div id="drag">
 				<div id="dragWrap">
-					<div class="bar"></div>
+					<div id="bar"></div>
 					<div class="barBottom"></div>
 					<div class="hand"></div>
+					<div class="handCircle"></div>
 				</div>
 			</div>
 		<!--drag button end-->
 		
+		<!--time text-->
+		<div id="clockText">
+			00:00
+		</div>
+		<!--text end-->
+		
+		<!--control start-->
+		<div id="control">
+			<input type="checkbox" name="play" id="checkplay" />
+			<a href="javascript:;">
+				<span class="play"></span>
+				<label for="checkplay" onclick="Timer.play();"></label>
+			</a>
+			
+			<a href="javascript:;" onclick="Timer.reset()">
+				<span class="reset">
+					<em></em>
+				</span>
+			</a>
+		</div>
+		<!--control end-->
+		
 	</div>
 <!--wrap end-->
 
+<script type="text/javascript" src="js/JTouch.js"></script>
 <script>
-var Common = {
+var Common, Timer, Utils;
+Common = {
 	getId : function (id) {
 		return document.getElementById(id) || id;
 	},
@@ -121,27 +281,201 @@ var Common = {
 		}
 	}
 };
+Utils = (function () {
+	var me = {};
 
-var pan = Common.getId('pan');
+	var _elementStyle = document.createElement('div').style;
+	var _vendor = (function () {
+		var vendors = ['t', 'webkitT', 'MozT', 'msT', 'OT'],
+			transform,
+			i = 0,
+			l = vendors.length;
 
-for(var i = 0; i< 180 ; i ++){
-	var span = document.createElement('span');
-	if(i%30 === 0){
-		span.className = 'long';
-	}else if(i%5 === 0){
-		span.className = 'middle';
-	}else{
-		span.className = 'short';
+		for ( ; i < l; i++ ) {
+			transform = vendors[i] + 'ransform';
+			if ( transform in _elementStyle ) return vendors[i].substr(0, vendors[i].length-1);
+		}
+
+		return false;
+	})();
+
+	function _prefixStyle (style) {
+		if ( _vendor === false ) return false;
+		if ( _vendor === '' ) return style;
+		return _vendor + style.charAt(0).toUpperCase() + style.substr(1);
+	}
+
+
+	me.extend = function (target, obj) {
+		for ( var i in obj ) {
+			target[i] = obj[i];
+		}
 	};
-	span.style.webkitTransform = 'rotate('+i+'deg)';
-	pan.appendChild(span);
-};
+	var _transform = _prefixStyle('transform');
+	me.extend(me, {
+		hasTransform: _transform !== false,
+		hasPerspective: _prefixStyle('perspective') in _elementStyle,
+		hasTouch: 'ontouchstart' in window,
+		hasPointer: navigator.msPointerEnabled,
+		hasTransition: _prefixStyle('transition') in _elementStyle
+	});
+	me.extend(me.style = {}, {
+		transform: _transform,
+		transitionTimingFunction: _prefixStyle('transitionTimingFunction'),
+		transitionDuration: _prefixStyle('transitionDuration'),
+		transformOrigin: _prefixStyle('transformOrigin')
+	});
+	return me;
+})();
 
+Timer = {
+	result : 0 ,
+	deltaY : 0,
+	time : {
+		second : 0 ,
+		minute : 0,
+		limit : 0
+	},
+	pan : Common.getId('pan'),
+	bar : Common.getId('bar'),
+	dragWrap : Common.getId('dragWrap'),
+	circle : Common.getId('circle'),
+	init : function () {
+		var i = 180, j = 150;
+		
+		/*载入表盘的刻度*/
+		for(i; i > 0 ; i -= 1){
+			var span = document.createElement('span');
+			if(i%30 === 0){
+				span.className = 'long';
+			}else if(i%5 === 0){
+				span.className = 'middle';
+			}else{
+				span.className = 'short';
+			};
+			span.style.webkitTransform = 'rotate('+i+'deg)';
+			Timer.pan.appendChild(span);
+		};
+		
+		/*载入下拉条的刻度*/
+		for(j ; j > 0 ; j -= 1){
+			var span = document.createElement('span');
+			if(j%25 === 0){
+				span.className = 'long';
+			}else if(j%5 === 0){
+				span.className = 'middle';
+			}else{
+				span.className = 'short';
+			};
+			Timer.bar.appendChild(span);
+		};
+		
+	},
+	reset : function () {
+		Timer.time = {
+			second : 0 ,
+			minute : 0,
+			limit : 0
+		};
+		Timer.result = 0;
+		Timer.dragWrap.style.webkitTransform = 'translate3d(0,0,0)';
+		Timer.circle.style.webkitTransform = 'rotate(0deg)';
+		Common.getId('clockText').innerHTML = '00:00';
+		clearInterval(Timer.timer);
+	},
+	play : function () {
+		var stop = Common.getId('checkplay').checked;
+		if(!stop){
+			//开始计时
+			if(Timer.timer){
+				clearInterval(Timer.timer);
+			};
+			if(Timer.time.limit <= 0){
+				return false;
+			};
+			//开始倒计时
+			Timer.timer = setInterval(function(){
+				Timer.time.limit -= 1;
+				Timer.time.second -= 1;
+				if(Timer.time.second < 0){
+					Timer.time.second = 59;
+					Timer.time.minute -= 1;
+					Timer.time.minute = (Timer.time.minute <= 0)?0:Timer.time.minute - 1;
+				};
+				if(Timer.time.limit <= 0){
+					//小于等于0，停止计时，弹出消息
+					Timer.end();
+				}else{
+					Timer.move(Timer.time.limit);
+					Timer.text();
+				};
+				
+			},1000);
+			
+		}else{
+			//停止计时
+			clearInterval(Timer.timer);
+		}
+	},
+	move : function (t) {
+		var rotate = Math.floor(t/10);
+		Timer.circleStyle[Utils.style.transform] = 'rotate('+rotate+'deg)';
+	},
+	text : function(){
+		var minute, second;
+		minute = (Timer.time.minute < 10)?'0'+Timer.time.minute:Timer.time.minute;
+		second = (Timer.time.second < 10)?'0'+Timer.time.second:Timer.time.second;
+		Common.getId('clockText').innerHTML = minute+':'+second;
+	},
+	end : function (){
+		Timer.reset();
+		alert ('ff');
+	}
+};
+Timer.init();
+
+JTouch(Common.getId('drag')).on('swipe',function(evt,data){
+
+	Timer.deltaY = Timer.result + data['y'];
+	if(Timer.deltaY > 300){
+		Timer.deltaY = 300;
+	}else if(Timer.deltaY < 0){
+		Timer.deltaY = 0;
+	};
+	
+	if(!Timer.dragStyle){
+		Timer.dragStyle = Timer.dragWrap.style;
+	};
+	if(!Timer.circleStyle){
+		Timer.circleStyle = Timer.circle.style;
+	}
+	Timer.dragStyle[Utils.style.transform] = 'translate3d(0,'+Timer.deltaY+'px,0)';
+	Timer.circleStyle[Utils.style.transform] = 'rotate('+1.2*Timer.deltaY+'deg)';
+	
+	
+	var minute, second;
+	Timer.time.minute = Math.round(0.2*Timer.deltaY);
+	Timer.time.second = Math.round(Timer.deltaY%5)*12;
+	
+	minute = (Timer.time.minute < 10)?'0'+Timer.time.minute:Timer.time.minute;
+	second = (Timer.time.second < 10)?'0'+Timer.time.second:Timer.time.second;
+	
+	Common.getId('clockText').innerHTML = minute+':'+second;
+	if(data['status'] === 'end'){
+		Timer.result = Timer.deltaY;
+		Timer.time.limit = 12*Timer.deltaY;
+	};
+}).on('end',function(){
+	Timer.result = Timer.deltaY ;
+	Timer.time.limit = 12*Timer.deltaY;
+});
+/*
 var percent = 0, circle = Common.getId('circle');
 setInterval(function(){
 	percent = (percent < 360)? percent+1 : 0;
 	circle.style.webkitTransform = 'rotate('+3*percent+'deg)';
-},500)
+},500);
+*/
 </script>
 
 </body>
