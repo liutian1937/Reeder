@@ -22,7 +22,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	}
 
 #wrap{width:420px;margin:0px auto;position:relative;}
-#wrap h1{width:100%;height:50px;background-image:-webkit-gradient(linear,0% 15%, 0% 100%, from(#999999), to(#999999), color-stop(0.0,#333333));text-align:center;color:#fff;line-height:50px;}
+#wrap h1{width:100%;height:50px;text-align:center;color:#fff;line-height:50px;}
+#wrap h1{
+background: rgb(125,126,125); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(125,126,125,1) 0%, rgba(14,14,14,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(125,126,125,1)), color-stop(100%,rgba(14,14,14,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(125,126,125,1) 0%,rgba(14,14,14,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
+}
 
 #timer{width:301px;height:301px;background:#fff;border-radius:301px;box-shadow:0px 0px 100px rgba(220,220,220,0.2),0px 8px 16px rgba(177,177,177,0.5),inset 0px 0px 50px rgba(229,229,229,0.5);position:relative;overflow:hidden;margin-top:30px;}
 
@@ -45,8 +55,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 .no15{right:46px;top:142px;}
 
 /*下拉部分*/
-#drag{position:absolute;right:10px;top:50px;cursor:pointer;overflow:hidden;}
+#drag{position:absolute;right:10px;top:80px;overflow:hidden;}
 #dragWrap{position:relative;padding-bottom:110px;width:90px;text-align:center;top:-300px;-webkit-transition:all 0s linear;-moz-transition:all 0s linear;-o-transition:all 0s linear;transition:all 0s linear;}
+
+
+#dropShadow{position:absolute;top:0px;width:100%;height:5px;overflow:hidden;z-index:10;}
+#dropShadow:after {position: absolute;width: 100%;height:100px;border-radius:25%;bottom: 16px;content: "";box-shadow: 0 6px 17px rgba(0,0,0,0.7);}
 
 /*下拉条*/
 #bar{width:48px;background:#8fa58e;z-index:20;display:inline-block;box-shadow:0px 0px 2px rgba(177,177,177,0.4);position:relative;}
@@ -56,19 +70,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 #bar .middle:after{width:6px;}
 #bar .short:after{width:3px;}
 
-#bar:after{content:'';width:0px;height:0px;font-size:0;line-height:0;position:absolute;bottom:-18px;left:18px;border:6px dotted #fff;border:6px dotted #fff\0\9;border-color:transparent;border-top-color:#aaa;}
+#bar:after{content:'';width:0px;height:0px;font-size:0;line-height:0;position:absolute;bottom:-18px;left:18px;border:6px dotted #fff;border:6px dotted #fff\0\9;border-color:transparent;border-top-color:#aaa;cursor:pointer;}
 /*拉环*/
-#dragWrap .barBottom{width:52px;height:20px;left:19px;bottom:92px;position:absolute;z-index:2;background:#fff;}
+#dragWrap .barBottom{width:52px;height:20px;left:19px;bottom:92px;position:absolute;z-index:2;background:#fff;cursor:pointer;}
 #dragWrap .barBottom:before{content:'';width:1px;height:100%;position:absolute;left:0px;top:0px;background:#ddd;box-shadow:-1px 0px 1px rgba(177,177,177,0.2);}
 #dragWrap .barBottom:after{content:'';width:1px;height:100%;position:absolute;right:0px;top:0px;background:#ddd;box-shadow:1px 0px 1px rgba(177,177,177,0.2);}
-#dragWrap .hand{width:78px;height:78px;position:absolute;left:5px;bottom:22px;border:1px solid #ddd;border-radius:78px;box-shadow:0px 5px 10px rgba(177,177,177,0.4),inset 0px 0px 1px rgba(229,229,229,0.5);z-index:1;}
-#dragWrap .handCircle{width:58px;height:58px;position:absolute;left:15px;bottom:32px;border-radius:58px;border:1px solid #ddd;box-shadow:0px -1px 8px #e8e8e8,inset 0px 3px 7px rgba(0,0,0,0.3);z-index:10;}
+#dragWrap .hand{width:78px;height:78px;position:absolute;left:5px;bottom:22px;border:1px solid #ddd;border-radius:78px;box-shadow:0px 5px 10px rgba(177,177,177,0.4),inset 0px 0px 1px rgba(229,229,229,0.5);z-index:1;cursor:pointer;}
+#dragWrap .handCircle{width:58px;height:58px;position:absolute;left:15px;bottom:32px;border-radius:58px;border:1px solid #ddd;box-shadow:0px -1px 8px #e8e8e8,inset 0px 3px 7px rgba(0,0,0,0.3);z-index:10;cursor:pointer;}
 
 #clockText{width:100%;text-indent:110px;padding:20px 0px;color:#9c5656;font-size:30px;font-weight:bold;line-height:30px;}
 
 
 /*控制按钮*/
-#control{width:300px;text-align:center;}
+#controlWrap{overflow:hidden;padding-top:20px;}
+#control{width:300px;text-align:center;position:relative;top:80px;}
 #control a{width:80px;height:80px;border-radius:80px;display:inline-block;position:relative;text-align:center;margin:0px 20px;}
 #control a span{width:64px;height:64px;background:#fff;display:inline-block;border-radius:64px;margin-top:8px;box-shadow:0px 0px 10px #cdcdcd,inset 0px 0px 1px #f9f9f9;position:relative;z-index:1;}
 #control a{
@@ -212,6 +227,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 				
 		<!--drag button start-->
 			<div id="drag">
+				<div id="dropShadow"></div>
 				<div id="dragWrap">
 					<div id="bar"></div>
 					<div class="barBottom"></div>
@@ -228,18 +244,20 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 		<!--text end-->
 		
 		<!--control start-->
-		<div id="control">
-			<input type="checkbox" name="play" id="checkplay" />
-			<a href="javascript:;">
-				<span class="play"></span>
-				<label for="checkplay" onclick="Timer.play();"></label>
-			</a>
-			
-			<a href="javascript:;" onclick="Timer.reset()">
-				<span class="reset">
-					<em></em>
-				</span>
-			</a>
+		<div id="controlWrap">
+			<div id="control">
+				<input type="checkbox" name="play" id="checkplay" />
+				<a href="javascript:;">
+					<span class="play"></span>
+					<label for="checkplay" onclick="Timer.play();"></label>
+				</a>
+				
+				<a href="javascript:;" onclick="Timer.reset(true)">
+					<span class="reset">
+						<em></em>
+					</span>
+				</a>
+			</div>
 		</div>
 		<!--control end-->
 		
@@ -336,10 +354,15 @@ Timer = {
 		minute : 0,
 		limit : 0
 	},
+	isAnimate : false,
+	controlShow : false,
 	pan : Common.getId('pan'),
 	bar : Common.getId('bar'),
 	dragWrap : Common.getId('dragWrap'),
 	circle : Common.getId('circle'),
+	transform : Utils.style.transform,
+	transitionDuration : Utils.style.transitionDuration,
+	transitionTimingFunction : Utils.style.transitionTimingFunction,
 	init : function () {
 		var i = 180, j = 150;
 		
@@ -353,7 +376,7 @@ Timer = {
 			}else{
 				span.className = 'short';
 			};
-			span.style.webkitTransform = 'rotate('+i+'deg)';
+			span.style[Timer.transform] = 'rotate('+i+'deg)';
 			Timer.pan.appendChild(span);
 		};
 		
@@ -371,21 +394,37 @@ Timer = {
 		};
 		
 	},
-	reset : function () {
+	reset : function (handle) {
 		Timer.time = {
 			second : 0 ,
-			minute : 0,
+			minute : 0 ,
 			limit : 0
 		};
-		Timer.result = 0;
-		Timer.dragWrap.style.webkitTransform = 'translate3d(0,0,0)';
-		Timer.circle.style.webkitTransform = 'rotate(0deg)';
-		Common.getId('clockText').innerHTML = '00:00';
-		clearInterval(Timer.timer);
+		Timer.result = 0; //拉手拉动距离
+		Timer.hideControl(); //隐藏控制按钮
+		Timer.isAnimate = false; //动画停止
+		
+		Timer.circleStyle[Timer.transform] = 'rotate(0deg)'; //指针归零
+		Timer.circleStyle[Timer.transitionDuration] = '200ms';
+		Timer.circleStyle[Timer.transitionTimingFunction] = 'linear';
+		
+		Common.getId('clockText').innerHTML = '00:00'; //时间数字归零
+		clearInterval(Timer.timer); //清除时间计时器
+		if(handle){
+			Timer.dragStyle[Timer.transform]  = 'translate(0,-30px)'; //下拉条反弹
+			Timer.dragStyle[Timer.transitionDuration] = '200ms';
+			Timer.timeout = setTimeout(function(){
+				Timer.dragStyle[Timer.transform]  = 'translate(0,0)'; //下拉条归零
+				Timer.dragStyle[Timer.transitionDuration] = '200ms';
+				clearTimeout(Timer.timeout);
+			},360);
+		}else{
+			Timer.dragStyle[Timer.transform]  = 'translate(0,0px)'; //下拉条归零
+		};
 	},
-	play : function () {
+	play : function (auto) {
 		var stop = Common.getId('checkplay').checked;
-		if(!stop){
+		if(!stop || auto){
 			//开始计时
 			if(Timer.timer){
 				clearInterval(Timer.timer);
@@ -395,16 +434,16 @@ Timer = {
 			};
 			//开始倒计时
 			Timer.timer = setInterval(function(){
-				Timer.time.limit -= 1;
-				Timer.time.second -= 1;
+				Timer.isAnimate = true; //是否在计时中
+				Timer.time.second -= 1; //秒针递减
+				Timer.time.limit -= 1;//整体时间递减
 				if(Timer.time.second < 0){
 					Timer.time.second = 59;
-					Timer.time.minute -= 1;
 					Timer.time.minute = (Timer.time.minute <= 0)?0:Timer.time.minute - 1;
 				};
 				if(Timer.time.limit <= 0){
 					//小于等于0，停止计时，弹出消息
-					Timer.end();
+					Timer.reset();
 				}else{
 					Timer.move(Timer.time.limit);
 					Timer.text();
@@ -414,61 +453,100 @@ Timer = {
 			
 		}else{
 			//停止计时
+			Timer.isAnimate = false;
 			clearInterval(Timer.timer);
 		}
 	},
 	move : function (t) {
-		var rotate = Math.floor(t/10);
-		Timer.circleStyle[Utils.style.transform] = 'rotate('+rotate+'deg)';
+		var rotate = 0.1*t, height = t/12;
+		//Timer.result = Math.floor(height);
+		Timer.circleStyle[Timer.transform] = 'rotate('+rotate+'deg)';
+		//Timer.dragStyle[Timer.transform] = 'translate(0,'+height+'px)';
+	},
+	translate : function (y){
+		if(!Timer.dragStyle){
+			Timer.dragStyle = Timer.dragWrap.style;
+		};
+		if(!Timer.circleStyle){
+			Timer.circleStyle = Timer.circle.style;
+		};
+		Timer.dragStyle[Timer.transitionDuration] = '0ms';
+		Timer.dragStyle[Timer.transform] = 'translate(0,'+y+'px)';
+		
+		Timer.circleStyle[Timer.transform] = 'rotate('+1.2*y+'deg)';
+		Timer.circleStyle[Timer.transitionDuration] = '0ms';
+		Timer.circleStyle[Timer.transitionTimingFunction] = 'linear';
+	},
+	showControl : function (){
+		//显示控制按钮
+		if(!Timer.control){
+			Timer.control = Common.getId('control');
+		};
+		Timer.controlShow = true;
+		
+		clearTimeout(Timer.timeout);
+
+		control.style.top = '-20px';
+		control.style[Timer.transitionDuration] = '300ms';
+		control.style[Timer.transitionTimingFunction] = 'ease-out';
+
+		Timer.timeout = setTimeout(function(){
+			control.style.top = '0px';
+			control.style[Timer.transitionDuration] = '200ms';
+			control.style[Timer.transitionTimingFunction] = 'linear';
+			clearTimeout(Timer.timeout);
+		},300);
+	},
+	hideControl : function () {
+		Timer.controlShow = false;
+		control.style.top = '80px';
+		control.style[Timer.transitionDuration] = '200ms';
+		control.style[Timer.transitionTimingFunction] = 'linear';
 	},
 	text : function(){
 		var minute, second;
 		minute = (Timer.time.minute < 10)?'0'+Timer.time.minute:Timer.time.minute;
 		second = (Timer.time.second < 10)?'0'+Timer.time.second:Timer.time.second;
 		Common.getId('clockText').innerHTML = minute+':'+second;
-	},
-	end : function (){
-		Timer.reset();
-		alert ('ff');
 	}
 };
 Timer.init();
 
 JTouch(Common.getId('drag')).on('swipe',function(evt,data){
-
+	if(Timer.isAnimate){
+		return false;
+	};
 	Timer.deltaY = Timer.result + data['y'];
 	if(Timer.deltaY > 300){
 		Timer.deltaY = 300;
 	}else if(Timer.deltaY < 0){
 		Timer.deltaY = 0;
 	};
-	
-	if(!Timer.dragStyle){
-		Timer.dragStyle = Timer.dragWrap.style;
-	};
-	if(!Timer.circleStyle){
-		Timer.circleStyle = Timer.circle.style;
-	}
-	Timer.dragStyle[Utils.style.transform] = 'translate3d(0,'+Timer.deltaY+'px,0)';
-	Timer.circleStyle[Utils.style.transform] = 'rotate('+1.2*Timer.deltaY+'deg)';
-	
-	
-	var minute, second;
-	Timer.time.minute = Math.round(0.2*Timer.deltaY);
-	Timer.time.second = Math.round(Timer.deltaY%5)*12;
-	
+	Timer.translate(Timer.deltaY);
+
+	var minute;
+	Timer.time.minute = Math.floor(0.2*Timer.deltaY);	
 	minute = (Timer.time.minute < 10)?'0'+Timer.time.minute:Timer.time.minute;
-	second = (Timer.time.second < 10)?'0'+Timer.time.second:Timer.time.second;
-	
-	Common.getId('clockText').innerHTML = minute+':'+second;
-	if(data['status'] === 'end'){
-		Timer.result = Timer.deltaY;
-		Timer.time.limit = 12*Timer.deltaY;
-	};
+	Common.getId('clockText').innerHTML = minute+':00';
 }).on('end',function(){
-	Timer.result = Timer.deltaY ;
-	Timer.time.limit = 12*Timer.deltaY;
+	if(Timer.time.minute === 0){
+		Timer.reset();
+	};
+	if(Timer.isAnimate || Timer.time.minute === 0){
+		return false;
+	};
+	Common.getId('checkplay').checked = true;
+	Timer.isAnimate = true;
+	Timer.result = 5*Timer.time.minute;
+	Timer.translate(Timer.result);
+	Timer.time.limit = 60*Timer.time.minute; //时间限制，单位s
+	Timer.time.second = 0; //将second归零
+	if(!Timer.controlShow){
+		Timer.showControl(); //显示计时按钮
+	}
+	Timer.play('auto'); //自动开始计时
 });
+
 /*
 var percent = 0, circle = Common.getId('circle');
 setInterval(function(){
